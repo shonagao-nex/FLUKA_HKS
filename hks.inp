@@ -1,0 +1,926 @@
+* Please work
+TITLE
+CPS_HC
+GLOBAL                               -2.                              OLDFLAIR
+* Set the defaults for precision simulations
+DEFAULTS                                                              PRECISIO
+#define EGeV 2.2
+#define Curr_uA 25.0
+!@what.1=Curr_uA/qe*1.e-6
+#define Ne_per_s 156037743807570.34
+!@what.1=Curr_uA/qe*1.e-6*3600.*1000.
+#define Ne_1kh 561735877707253219328
+!@what.1=Ne_per_s*3600.*1.e-10
+#define pSv_rh 56173587.770725325
+!@what.1=3600.*1.e-10
+#define pSvs_rh 3.6e-07
+!@what.1=Ne_1kh*1.602176462E-7
+#define DStoGy 90000000112347.16
+#define TgZoff 748.48
+!@what.1=0.5*324.*sin(radians(1.))*36./324.
+#define RBLiEn 0.3141433158711032
+!@what.1=0.5*324.*sin(radians(1.))*(2200.-TgZoff)/324.
+#define RBLiEx 12.66625849592288
+#define TgYAzmAng 0.0
+#define gainpwmx 5.0
+#define sgain 3.0
+!@what.1=31.10*inch
+#define MagZlen 78.994
+!@what.1=30.61*inch
+#define MagYlen 77.7494
+!@what.1=29.54*inch
+#define MagXlen 75.0316
+!@what.1=16.77*inch
+#define MagInXl 42.5958
+!@what.1=19.40*inch
+#define MagInYl 49.275999999999996
+!@what.1=23.465*inch
+#define MagPolZl 59.6011
+!@what.1=7.717*inch
+#define MagPolYl 19.60118
+!@what.1=2.*1.764*inch
+#define MagPolY1 8.96112
+!@what.1=1.933*inch
+#define MagPolY2 4.90982
+!@what.1=8.167*inch
+#define MagPolX1 20.74418
+!@what.1=7.384*inch
+#define MagPolX2 18.75536
+!@what.1=5.082*inch
+#define MagPolX3 12.90828
+!@what.1=2.303*inch
+#define MagPolR 5.84962
+!@what.1=27.56*inch
+#define AbsZlen 70.0024
+!@what.1=2*5.58*inch
+#define AbsYlen 28.3464
+!@what.1=7.84*inch
+#define AbsXlen 19.9136
+!@what.1=10.84
+#define CoilXlen 10.84
+!@what.1=38.52
+#define CoilYlen 38.52
+!@what.1=78.52
+#define CoilZlen 78.52
+!@what.1=2.7*2.
+#define SlitXlen 5.4
+!@what.1=2.45*2.
+#define SlitYlen 4.9
+!@what.1=0.1
+#define SlitZthk 0.1
+!@what.1=-29.5
+#define SlitZini -29.5
+!@what.1=0.5
+#define SlitStep 0.5
+!@what.1=-9.5
+#define WdgZ0 -9.5
+!@what.1=22.1
+#define WdgZ1 22.1
+!@what.1=0.72
+#define WdgY1 0.72
+!@what.1=0.070
+#define WdgD 0.07
+!@what.1=-1.
+#define WdgZNY -1
+!@what.1=-0.0144
+#define WdgZNZ -0.0144
+!@what.1=WdgZ1-WdgZ0
+#define WdgDz 31.6
+!@what.1=WdgY1-0.15
+#define WdgDy 0.57
+!@what.1=sqrt(WdgDz**2+WdgDy**2)
+#define Wdgl 31.605140404687337
+!@what.1=((Wdgl/2.)**2+WdgD**2)/2./WdgD
+#define WdgR 1783.7580357142856
+!@what.1=(WdgDz**2+WdgDy**2)/2./WdgDz
+#define WdgA 15.805140822784809
+!@what.1=WdgDy/WdgDz
+#define WdgB 0.018037974683544303
+!@what.1=1.+WdgB**2
+#define Wdga 1.000325368530684
+!@what.1=-2.*WdgA*WdgB
+#define Wdgb -0.5701854600624899
+!@what.1=WdgA**2-WdgR**2
+#define Wdgc -3181542.9274988584
+!@what.1=(-Wdgb+sqrt(Wdgb**2-4.*Wdga*Wdgc))/2./Wdga
+#define WdgCy0 1783.6829285284882
+!@what.1=WdgZ0-sqrt(WdgR**2-WdgCy0**2)
+#define WdgCz -25.868886685495415
+!@what.1=-WdgCy0-0.15
+#define WdgCy -1783.8329285284883
+!@what.1=57.25
+#define WPendZ 57.25
+!@what.1=2.0*inch
+#define PbBthk 5.08
+!@what.1=8.0*inch
+#define PbBlen 20.32
+!@what.1=4.0*inch
+#define PbBwid 10.16
+!@what.1=2.875*inch
+#define WBthk 7.3025
+!@what.1=6.0*inch
+#define WBlen 15.24
+!@what.1=4.0*inch
+#define WBwid 10.16
+!@what.1=(WPendZ-MagZlen/2)/WBwid
+#define WPthk 1.7473425196850394
+!@what.1=MagYlen/WBthk
+#define WPhgt 10.64695652173913
+!@what.1=MagXlen/WBlen
+#define WPwid 4.923333333333333
+!@what.1=2.125*inch
+#define FeSpace 5.3975
+!@what.1=2.125*inch
+#define BeSpace 5.3975
+!@what.1=(5*13*1+4*13*1+2*7*1+1*1*1)+(5*1*9)+(5*1*9+5*1*8+5*1*8+3*1*7)+2*(1*9*6)+(5*11*1)
+#define TotlWblk 486
+!@what.1=TotlWblk*WBlen*WBwid*WBthk
+#define WPVol 549523.8041760001
+!@what.1=WPVol*16.5/1000.
+#define WPWkg 9067.142768904001
+#define RPb 77.
+#define LC 35.
+!@what.1=PbBthk*PbBlen*PbBwid*2162.5
+#define VPb 2267969.6576
+!@what.1=PbBthk*PbBlen*PbBwid*795.*11.33/1000.
+#define PbWFr 9446.6573389056
+!@what.1=VPb*11.33/1000.
+#define PbWkg 25696.096220608
+#define Rhall 2286.
+#define DomeRZ 1907.54
+#define HWHall 1336.04
+!@what.1=0.5*(Rhall**2+(DomeRZ-HWHall)**2)/(DomeRZ-HWHall)
+#define Rdome 4857.75
+#define Thall 40.
+#define Tthall 121.9
+#define FlrThk 100.
+#define WallThk 457.2
+#define WallRngT 66.
+#define WallRngH 180.
+#define TgX 469.9
+#define TgY_Fl 396.24
+#define Flrdeep 1143.
+#define Tair1 20000.
+!@what.1=Flrdeep-TgY_Fl
+#define Yairgrnd 746.76
+!@what.1=Yairgrnd-Flrdeep+DomeRZ-Rdome
+#define Ycenter -3346.45
+!@what.1=Ycenter-Yairgrnd
+#define Yroof -4093.21
+#define Domethk 218.28
+#define Domegrth 182.88
+* For HES/HKS Geometry
+#define E_Theta -9
+#define E_PTheta 1.77
+#define E_PBend -6.13
+#define E_DBend 50.0
+#define E_Q1L 60
+#define E_Q2L 50
+#define TtoEPCSi 140
+#define EPArm 769
+#define EDArm 220
+#define K_Theta 11.5
+#define K_PTheta 3.08
+#define K_PBend 14.3
+#define K_DBend 70
+#define K_Q1L 84
+#define K_Q2L 60
+#define TtoKPCSi 97.78
+#define KPArm 321
+#define KDArm 266.3
+* Pre-calculation
+!@what.1=-TtoEPCSi * sin(radians(E_Theta))
+#define EPCS_X 21.90082510563232
+!@what.1=TtoEPCSi * cos(radians(E_Theta)) +TgZoff
+#define EPCS_Z 886.7563676833192
+!@what.1=E_Theta+E_PTheta+E_PBend
+#define E_Spec -13.36
+!@what.1=EPCS_X + EPArm* cos(radians(E_Theta+E_PTheta)) - (EPArm-1.5)*cos(radians(E_Spec))
+#define E_SpecX 38.05698190349028
+!@what.1=EPCS_Z + EPArm*sin(radians(E_Theta+E_PTheta)) - (EPArm-1.5)*sin(radians(E_Spec))
+#define E_SpecZ 967.3208955103792
+!@what.1=E_SpecX - (E_Q1L/2+30+16.7)*sin(radians(E_Spec))
+#define EQ1_X 55.77995283451883
+!@what.1=E_SpecZ + (E_Q1L/2+30+16.7)*cos(radians(E_Spec))
+#define EQ1_Z 1041.945196521363
+!@what.1=EQ1_X - (E_Q1L/2+E_Q2L/2+30)*sin(radians(E_Spec))
+#define EQ2_X 75.42079415312935
+!@what.1=EQ1_Z + (E_Q1L/2+E_Q2L/2+30)*cos(radians(E_Spec))
+#define EQ2_Z 1124.6448782154127
+!@what.1=EQ2_X - EDArm * sin(radians(E_Spec-90))  - 105 * sin(radians(E_Spec))
+#define ED_X 313.7292448724831
+!@what.1=EQ2_Z - EDArm * cos(radians(E_Spec+90)) + 105 * cos(radians(E_Spec))
+#define ED_Z 1175.968189836365
+!@what.1=ED_X - (315+113)/2 * cos(radians(E_Spec-E_DBend))
+#define ESh_X 217.77523662921618
+!@what.1=ED_Z - (315+113)/2 * sin(radians(E_Spec-E_DBend))
+#define ESh_Z 1367.2502546047353
+!@what.1=-TtoKPCSi * sin(radians(K_Theta))
+#define KPCS_X -19.494196627313542
+!@what.1=TtoKPCSi * cos(radians(K_Theta)) + TgZoff
+#define KPCS_Z 844.2970376178248
+!@what.1=K_Theta+K_PTheta+K_PBend
+#define K_Spec 28.880000000000003
+!@what.1=KPCS_X - KPArm * cos(radians(K_Theta+K_PTheta)) + (KPArm+1.5) * cos(radians(K_Spec))
+#define K_SpecX -47.76536817366065
+!@what.1=KPCS_Z - KPArm * sin (radians(K_Theta+K_PTheta)) + (KPArm+1.5) * sin(radians(K_Spec))
+#define K_SpecZ 919.2512152883304
+!@what.1=K_SpecX - (K_Q1L/2 +30+16.7) * sin(radians(K_Spec))
+#define KQ1_X -90.60540670124936
+!@what.1=K_SpecZ + (K_Q1L/2+30+16.7) * cos(radians(K_Spec))
+#define KQ1_Z 996.9198775592536
+!@what.1=KQ1_X - (K_Q1L/2+K_Q2L/2+30)*sin(radians(K_Spec))
+#define KQ2_X -139.86903612418115
+!@what.1=KQ1_Z +(K_Q1L/2+K_Q2L/2+30)*cos(radians(K_Spec))
+#define KQ2_Z 1086.23446100496
+!@what.1=KQ2_X - KDArm * sin(radians(K_Spec+90)) - 70 * sin(radians(K_Spec))
+#define KD_X -406.8585227045423
+!@what.1=KQ2_Z + KDArm * cos(radians(K_Spec+90)) + 70 * cos(radians(K_Spec))
+#define KD_Z 1018.9120720429277
+!@what.1=KD_X  + (450+53/sin(radians(35)))/2 * cos(radians(K_Spec+K_DBend))
+#define KSh_X -448.7226569180607
+!@what.1=KD_Z  + (450+53/sin(radians(35)))/2 * sin(radians(K_Spec+K_DBend))
+#define KSh_Z 1286.8627412525561
+* Define the beam characteristics
+BEAM             2.2                         -0.03     -0.03        1.ELECTRON
+* Define the beam position
+BEAMPOS                             700.
+*SOURCE                                                                source
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7..
+PHYSICS           3.                         MUON+     MUON-        1.DECAYS
+PHYSICS           3.                         PION+    PIZERO        1.DECAYS
+PHYSICS           3.                                                  EVAPORAT
+PHYSICS          -1.                                                  COALESCE
+PHYSICS           1.                                                  INFLDCAY
+PHYSICS           1.                                                  ISOMERS
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7..
+IONTRANS    HEAVYION
+MUPHOTON          1.                      BLCKHOLE  @LASTMAT
+PAIRBREM          3.       0.0    0.0003  BLCKHOLE  @LASTMAT
+PHOTONUC          1.                      BLCKHOLE  @LASTMAT
+PHOTONUC          1.                      BLCKHOLE  @LASTMAT          ELECTNUC
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7..
+PART-THR       -0.01     MUON+     MUON-                 0.0
+PART-THR       -0.01     PION+    PIZERO                 0.0
+PART-THR       -0.01    PROTON                           0.0
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7..
+MGNFIELD         50.      0.02       0.1       0.0       0.0       0.0
+!@what.4=KSh_X
+!@what.6=KSh_Z
+ROT-DEFI        200.                    -448.72266          1286.86274POS_TEST
+!@what.3=TgYAzmAng
+!@what.6=-TgZoff
+ROT-DEFI        200.                   0                       -748.48RotTgCham
+!@what.3=-90.
+!@what.4=TgX
+!@what.5=TgY_Fl-Flrdeep
+ROT-DEFI        100.                 -90     469.9   -746.76          RotScore
+* HES Setup
+!@what.4=EPCS_X
+!@what.6=EPCS_Z
+ROT-DEFI        200.                    21.9008251          886.756368posEPCS
+!@what.3=E_Theta+E_PTheta
+ROT-DEFI        200.               -7.23                              rotEPCS
+!@what.4=EQ1_X
+!@what.6=EQ1_Z
+ROT-DEFI        200.                 0.055.7799528           1041.9452posEQ1
+!@what.4=EQ2_X
+!@what.6=EQ2_Z
+ROT-DEFI        200.                 0.075.4207942          1124.64488posEQ2
+!@what.4=ED_X
+!@what.6=ED_Z
+ROT-DEFI        200.                    313.729245          1175.96819posED
+!@what.3=E_Spec
+ROT-DEFI        200.              -13.36                              rotEQQD
+!@what.4=ESh_X
+!@what.6=ESh_Z
+ROT-DEFI        200.                    217.775237          1367.25025posEsh
+!@what.3=E_Spec-E_DBend
+ROT-DEFI        200.              -63.36                              rotEsh
+* HKS Setup
+!@what.4=KPCS_X
+!@what.6=KPCS_Z
+ROT-DEFI        200.                    -19.494197          844.297038posKPCS
+!@what.3=K_Theta+K_PTheta
+ROT-DEFI        200.               14.58                              rotKPCS
+!@what.4=KQ1_X
+!@what.6=KQ1_Z
+ROT-DEFI        200.                    -90.605407          996.919878posKQ1
+!@what.4=KQ2_X
+!@what.6=KQ2_Z
+ROT-DEFI        200.                    -139.86904          1086.23446posKQ2
+!@what.4=KD_X
+!@what.6=KD_Z
+ROT-DEFI        200.                    -406.85852          1018.91207posKD
+!@what.3=K_Spec
+ROT-DEFI        200.               28.88                              rotKQQD
+!@what.4=KSh_X
+!@what.6=KSh_Z
+ROT-DEFI        200.                    -448.72266          1286.86274posKsh
+!@what.3=K_Spec+K_DBend
+ROT-DEFI        200.               98.88                              rotKsh
+* Enge Setup
+ROT-DEFI        200.                18.2     -128.                    posEnge
+!@what.6=140.+TgZoff
+ROT-DEFI        200.                         -400.              888.48posEngeSh
+ROT-DEFI        200.                 15.                              rotEngeSh
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7..
+GEOBEGIN                                                              COMBNAME
+    0    0          
+* Black body
+SPH blkbody    0.0 0.0 0.0 210000.
+* Void sphere
+SPH void       0.0 0.0 0.0 200000.
+!@what.3=235.-190.+TgZoff
+!@what.6=2200.-(235.-190.+TgZoff)
+!@what.7=RBLiEn
+!@what.8=RBLiEx
+TRC cnclbmln   0.0 0.0 793.48 0.0 0.0 1406.52 0.3141433158711032
+              12.66625849592288
+!@what.2=-396.24-120.
+!@what.7=Rhall+Thall
+RCC hallbase   -469.9 -516.24 0.0 0.0 2976.4 0.0 2326.
+!@what.1=-TgX
+!@what.2=-TgY_Fl
+!@what.7=Rhall
+RCC hallbas1   -469.9 -396.24 0.0 0.0 2676.4 0.0 2286.
+!@what.2=Yroof+Yairgrnd
+!@what.4=Rdome
+SPH hallhat    -469.9 -3346.45 0.0 4857.75
+RCC dump       0.0 0.0 2200.0 0.0 0.0 2.0 40.0
+* Place chamber, chamber windows and coils inside a rotation. With such definition we
+* could easily rotate the whole chamber
+$start_transform -RotTgCham
+* The window itself is 20 mil plastic.
+* In G2P experiment, a 100 mil (or 2.54mm) aluminum foil is mounted onto the chamber to protect the window.
+* Here I just place this plastic window, not the protection foil.
+!@what.7=47.9933
+RCC chamwin    0.0 -32. 0.0 0.0 64. 0.0 47.9933
+RCC cham0      0.0 -46.355 0.0 0.0 138.7094 0.0 47.9425
+* This is the bottom belt that will be subtracted from larger chamber
+RCC chambelB   0.0 -46.355 0.0 0.0 8.89 0.0 49.8475
+* This is the Middle belt that will be subtracted from larger chamber
+RCC chambelM   0.0 37.465 0.0 0.0 8.89 0.0 49.8475
+RCC chambelU   0.0 83.4644 0.0 0.0 8.89 0.0 49.8475
+RCC cham1      0.0 -43.18 0.0 0.0 132.3594 0.0 45.4025
+* down left window: dig a rectangle from the cylinder
+RPP winDL      15.63 36.73 -30. 30. 26.5 52.
+* down right window: dig a rectangle from the cylinder
+RPP winDR      -36.73 7.60 -30. 30. 26.5 52.
+RPP winL       40. 52. -30. 30. -14.033 14.033
+RPP winR       -52. -40. -30. 30. -14.033 14.033
+#if 0
+* Use this line to calculate Rbase if angle changes
+!@what.7=26.0/tan(17*deg)
+!@what.8=(26.0-22.0)/tan(17*deg)
+TRC dcoil0bk   0.0 0.0 26. 0.0 0.0 -22. 85.04216808058766 13.083410473936562
+#endif
+#if 0
+!@what.7=26.0*tan(50*deg)
+!@what.8=(26.0-17.44)*tan(50*deg)
+TRC dcoil1bk   0.0 0.0 26. 0.0 0.0 -17.44 30.98559340744946 10.201410752606437
+#endif
+* the entrnce flange: smaller outer part
+RCC entflg00   0.0 0.0 -44.5 0.0 0.0 -5.5 8.44
+* the entrnce flange: large outer part, 4", its window is 8 mil (0.02032cm) thick
+RCC entflg10   0.0 0.0 -50. 0.0 0.0 -1.52032 10.16
+* the entrnce flange: inner part
+RCC entflg1    0.0 0.0 -44.5 0.0 0.0 -7. 7.112
+$end_transform 
+* For target and Enge magnets
+$start_transform -RotTgCham
+* 150 mg/cm2 Pb target
+!@what.6=150./11350.
+RCC target     0.0 0.0 0.0 0.0 0.0 0.013215859030837005 1.8
+$start_transform posEnge
+!@what.3=-(47.625*2+41.554)/2
+!@what.4=(47.625*2+41.554)/2
+RPP Enge1      0.0 70. -68.402 68.402 -110. 51.2
+!@what.2=-(47.625*2+41.554)/2
+!@what.5=(47.625*2+41.554)
+RCC Enge2      0.0 -68.402 0.0 0.0 136.804 0.0 200.
+PLA Engecut1   0.0 0.0 1. 0.0 0.0 0.0
+PLA Engecut2   1. 0.0 0.0 0.0 0.0 0.0
+!@what.3=-105.41/2
+!@what.4=105.41/2
+!@what.5=52
+!@what.6=52+105.41
+RPP EngeBl     -12.7 0.0 -52.705 52.705 52. 157.41
+$end_transform 
+$end_transform 
+$start_transform posEPCS
+$start_transform rotEPCS
+RPP EPCSYoke   -10. 95. -66. 66. 0. 60.
+RPP EPCSPipe   -10. 4. -5. 5. -1. 61.
+RPP EPCSHole   4. 31. -16. 16. -1. 61.
+$end_transform 
+$end_transform 
+$start_transform posEQ1
+$start_transform rotEQQD
+RPP EQ1Yoke    -28. 28. -51.5 51.5 -30. 30.
+$end_transform 
+$end_transform 
+$start_transform posEQ2
+$start_transform rotEQQD
+RPP EQ2Yoke    -36. 36. -57.5 57.5 -25. 25.
+$end_transform 
+$end_transform 
+$start_transform posED
+$start_transform rotEQQD
+RCC EDOut      0.0 -122. 0.0 0.0 244. 0.0 315.
+RCC EDIn       0.0 -122. 0.0 0.0 244. 0.0 113.
+!@what.1=sin(radians(E_DBend))
+!@what.3=cos(radians(E_DBend))
+PLA EDBend     0.766044443118978 0.0 0.6427876096865394 0.0 0.0 0.0
+PLA EDEz       0.0 0.0 1. 0.0 0.0 0.0
+$end_transform 
+$end_transform 
+$start_transform posEsh
+$start_transform rotEsh
+!@what.1=(315-113)/2
+!@what.2=(315-113)/2+120
+RPP ESla       101. 221. -274. 274. 0.0 75.
+!@what.1=(315-113)/2+120-60
+!@what.2=(315-113)/2+120+60
+!@what.6=75+260
+RPP ESlb       161. 281. -274. 274. 75. 335.
+!@what.1=-(315-113)/2-120
+!@what.2=-(315-113)/2
+RPP ESra       -221. -101. -274. 274. 0.0 75.
+!@what.1=-(315-113)/2-120-60
+!@what.2=-(315-113)/2-120+60
+!@what.6=75+260
+RPP ESrb       -281. -161. -274. 274. 75. 335.
+$end_transform 
+$end_transform 
+$start_transform posKPCS
+$start_transform rotKPCS
+RPP KPCSYoke   -95. 10.0 -66. 66. 0.0 60.
+RPP KPCSPipe   -4. 10. -5. 5. -1. 61.
+RPP KPCSHole   -31. -4. -16. 16. 0.0 60.
+$end_transform 
+$end_transform 
+$start_transform posKQ1
+$start_transform rotKQQD
+RPP KQ1Yoke    -38. 38. -87.5 87.5 -42. 42.
+$end_transform 
+$end_transform 
+$start_transform posKQ2
+$start_transform rotKQQD
+RPP KQ2Yoke    -55. 55. -95. 95. -30. 30.
+$end_transform 
+$end_transform 
+$start_transform posKD
+$start_transform rotKQQD
+RCC KDOut      0.0 -125. 0.0 0.0 250. 0.0 450.
+!@what.7=53/sin(radians(35))
+RCC KDIn       0.0 -125. 0.0 0.0 250. 0.0 92.4026801679182
+PLA KDEz       0.0 0.0 1. 0.0 0.0 0.0
+!@what.1=-sin(radians(K_DBend))
+!@what.3=cos(radians(K_DBend))
+PLA KDBend     -0.9396926207859083 0.0 0.3420201433256688 0.0 0.0 0.0
+$end_transform 
+$end_transform 
+$start_transform posKsh
+$start_transform rotKsh
+!@what.1=127+60
+!@what.2=127+60+75
+!@what.5=21-60
+!@what.6=21+60
+RPP KS0        187. 262. -274. 274. -39. 81.
+!@what.2=127+120
+!@what.6=121+90
+RPP KSla       127. 247. -274. 274. 121. 211.
+!@what.2=215.5+120
+!@what.5=121+90
+!@what.6=121+90+400
+RPP KSlb       215.5 335.5 -274. 274. 211. 611.
+!@what.1=-(127+120)
+!@what.5=121
+!@what.6=121+90
+RPP KSra       -247. -127. -274. 274. 121. 211.
+!@what.1=-(215.5+120)
+!@what.5=121+90
+!@what.6=121+90+400
+RPP KSrb       -335.5 -215.5 -274. 274. 211. 611.
+$end_transform 
+$end_transform 
+!@what.1=-200-60
+!@what.2=-200+60
+!@what.3=-26*6*2.54/2
+!@what.4=26*6*2.54/2
+!@what.5=1150-52*3*2.54+TgZoff
+!@what.6=1150+52*2*2.54+TgZoff
+RPP MPSSh      -260. -140. -198.12 198.12 1502.24 2162.6400000000003
+$start_transform posEngeSh
+$start_transform rotEngeSh
+RPP EngeSh     -121.5 +121.5 -274. 274. -60. 60.
+$end_transform 
+$end_transform 
+XYP blbias5    2200.
+!@what.3=235-190.+TgZoff
+!@what.6=2200.-(235.-190.+TgZoff)
+!@what.7=RBLiEn+0.3
+!@what.8=RBLiEx+0.3
+TRC cnclbml1   0.0 0.0 793.48 0.0 0.0 1406.52 0.6141433158711032
+              12.966258495922881
+!@what.3=35.9+TgZoff
+RCC pipe1      0.0 0.0 784.38 0.0 0.0 19.4 1.9
+!@what.3=35.9+TgZoff
+!@what.6=19.4+3.2
+RCC piph1      0.0 0.0 784.38 0.0 0.0 22.599999999999998 1.6
+!@what.3=58.5+TgZoff-3.2
+!@what.6=283.5+3.2
+RCC pipe2      0.0 0.0 803.78 0.0 0.0 286.7 3.18
+!@what.3=58.5+TgZoff
+!@what.6=283.5+1
+RCC piph2      0.0 0.0 806.98 0.0 0.0 284.5 2.88
+!@what.3=64+TgZoff
+RCC pipeMag    0.0 0.0 812.48 0.0 0.0 227.3 4.45
+!@what.3=343+TgZoff-1
+!@what.6=495+1
+RCC pipe3      0.0 0.0 1090.48 0.0 0.0 496. 7.07
+!@what.3=343+TgZoff
+!@what.6=495+1
+RCC piph3      0.0 0.0 1091.48 0.0 0.0 496. 5.72
+!@what.3=839+TgZoff-1
+!@what.6=64+1
+RCC pipe4      0.0 0.0 1586.48 0.0 0.0 65. 8.89
+!@what.3=839+TgZoff
+!@what.6=64+1
+RCC piph4      0.0 0.0 1587.48 0.0 0.0 65. 8.26
+!@what.3=904+TgZoff-1
+!@what.6=201+1
+RCC pipe5      0.0 0.0 1651.48 0.0 0.0 202. 13.65
+!@what.3=904+TgZoff
+!@what.6=201+4
+RCC piph5      0.0 0.0 1652.48 0.0 0.0 205. 12.73
+!@what.3=1109+TgZoff-4
+!@what.6=125+4
+RCC pipe6      0.0 0.0 1853.48 0.0 0.0 129. 22.86
+!@what.3=1109+TgZoff
+!@what.6=125+12
+RCC piph6      0.0 0.0 1857.48 0.0 0.0 137. 21.91
+!@what.3=1246+TgZoff-12
+!@what.6=2200-(1246+TgZoff-12)
+RCC pipe7      0.0 0.0 1982.48 0.0 0.0 217.51999999999998 30.48
+!@what.3=1246+TgZoff
+!@what.6=2200-(1246+TgZoff)
+RCC piph7      0.0 0.0 1994.48 0.0 0.0 205.51999999999998 29.53
+!@what.3=240.-190.+TgZoff
+!@what.6=1.*inch
+!@what.7=6.+1.*inch
+RCC dlflng     0.0 0.0 798.48 0.0 0.0 2.54 8.54
+!@what.2=Yroof+Yairgrnd
+!@what.4=Rdome+Domethk-Domegrth
+SPH hallhat1   -469.9 -3346.45 0.0 4893.15
+!@what.2=Yroof+Yairgrnd
+!@what.4=Rdome+Domethk
+SPH hallhat2   -469.9 -3346.45 0.0 5076.03
+!@what.2=Yroof+Yairgrnd
+!@what.4=Rdome+Domethk-50.
+SPH hallhat3   -469.9 -3346.45 0.0 5026.03
+!@what.2=Yroof+Yairgrnd
+!@what.4=Rdome+Domethk-100.
+SPH hallhat4   -469.9 -3346.45 0.0 4976.03
+!@what.2=Yroof+Yairgrnd
+!@what.4=Rdome+Domethk-142.
+SPH hallhat5   -469.9 -3346.45 0.0 4934.03
+!@what.1=-TgY_Fl+Flrdeep
+XZP surface    746.76
+!@what.2=-TgX
+YCC column1    0.0 -469.9 2997.
+!@what.1=-TgX
+!@what.2=-TgY_Fl+Flrdeep
+!@what.7=Rhall+WallThk+440.*1.5
+!@what.8=Rhall+WallThk
+TRC mound      -469.9 746.76 0.0 0.0 440. 0.0 3403.2 2743.2
+!@what.1=-TgY_Fl+Flrdeep-300.
+XZP surface1   446.76
+!@what.2=-TgX
+YCC column2    0.0 -469.9 4000.
+!@what.2=-TgX
+!@what.3=Rhall+Thall+WallRngT
+YCC column3    0.0 -469.9 2392.
+!@what.1=-TgY_Fl+Flrdeep+100.
+XZP wallthbt   846.76
+!@what.1=-TgY_Fl+Flrdeep+100.+WallRngH+10.
+XZP wallthb1   1036.76
+END
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7..
+* Black hole
+BLKBODY     25 +blkbody -void
+* Void around
+VOID        25 +void -hallbase +surface1
+               | +surface +column1 -hallbase -surface1
+!@alpha=100
+HALLC       25 +hallhat +hallbas1
+               -(pipe1|pipe2|pipe3|pipe4|pipe5|pipe6|pipe7|pipeMag)
+               -dump -entflg00 -entflg10 -cham0 -chambelB -chambelM -chambelU
+               -chamwin -dlflng
+               -( EPCSYoke-EPCSPipe -EPCSHole )-EQ1Yoke -EQ2Yoke -( EDOut-EDIn +EDBend -EDEz )
+               -( KPCSYoke-KPCSPipe -KPCSHole)-KQ1Yoke -KQ2Yoke -( KDOut-KDIn+KDBend -KDEz )
+               -( ESra | ESrb | ESla | ESlb) -( KSra | KSrb | KSla | KSlb | KS0)
+               -( Enge1 | Enge2 + Engecut1 + Engecut2 ) -EngeSh -EngeBl
+               - MPSSh
+HALLWALL    25 +(hallbase) -(+hallbas1 +hallhat) -cnclbmln -dump +hallhat
+* chamber entrance flange
+CHAMENT     25 (+entflg00 | +entflg10) -entflg1 -cham1
+* chamber winddow
+!@alpha=90
+CHAMWIN     25 +chamwin -cham0 -entflg00
+!@alpha=90
+CHAMBO      25 +(cham0 | chambelB | chambelM | chambelU) -winDR -winDL -winL -winR -cham1 -entflg00
+TARGET      25 +target
+ENGEMag      5 Enge1 | Enge2 +Engecut1 +Engecut2
+EPCS        25 EPCSYoke-EPCSPipe -EPCSHole
+EQ1         25 EQ1Yoke
+EQ2         25 +EQ2Yoke
+ED          25 +EDOut -EDIn  +EDBend  -EDEz
+HESSH       25 ESra | ESrb | ESla | ESlb
+KPCS         5 KPCSYoke-KPCSPipe -KPCSHole
+KQ1          5 +KQ1Yoke
+KQ2          5 +KQ2Yoke
+KD           5 +KDOut  -KDIn +KDBend -KDEz
+HKSSH        5 KS0 | KSra | KSrb | KSla | KSlb
+ENGESH       5 +EngeSh
+ENGEBL       5 +EngeBl
+MPSSH        5 +MPSSh
+#if 0
+BLBIAS4     25 +cnclbmln +blbias5 -chamwin
+#endif
+BLBIAS5     25 (piph1|piph2|piph3|piph4|piph5|piph6|piph7)+blbias5 -chamwin
+CHAMBI      25 +cham1 -target
+               | (cham0 -cham1 +(winDR | winDL | winL | winR)) -entflg00
+               | +entflg1 -cham1
+DUMP        25 +dump
+#if 0
+DUMPLINE     5 +cnclbml1 -cnclbmln -chamwin
+#endif
+DUMPLIN2     5 (pipe1|pipe2|pipeMag |pipe3|pipe4|pipe5|pipe6|pipe7) - (piph1|piph2|piph3|piph4|piph5|piph6|piph7)
+               -chamwin
+DLFLNG       5 +dlflng -pipe1
+OUTSIDE      5 +hallbase -hallhat2 -mound
+               | +void -surface -hallbase -mound +column2
+DIRT1        5 +hallbase +hallhat5 -hallhat1 -(+hallbase +hallhat5 +wallthb1 -hallhat1)
+               | +column3 +wallthbt -hallbase -surface
+               | +hallhat5 -surface -column3
+DIRT2        5 +hallbase +hallhat4 -hallhat5 -( +hallbase +wallthb1 -hallhat5
+               )
+               | +hallhat4 -hallbase -hallhat5 -surface -(+hallhat4 +column3 +wallthb1 -hallbase -hallhat5
+               -surface)
+DIRT3        5 +hallbase +hallhat3 -hallhat4
+               | +hallhat3 -hallbase -hallhat4 -surface -( +column3 +wallthb1 -hallhat4
+               )
+DIRT4        5 +hallbase +hallhat2 -hallhat3
+               | +hallhat2 -hallbase -hallhat3 -surface
+ROOF         5 +hallbase +hallhat1 -hallhat
+               | +column3 +wallthb1 -hallbase -wallthbt
+               | +hallbase +wallthb1 -hallhat1
+MOUND        5 +mound -hallhat2
+               | +void +surface -column1 -surface1 +column2
+!@alpha=100
+OUTSIDE1     5 +void -surface -column2
+MOUND1       5 +void +surface -column1 -surface1 -column2
+END
+GEOEND
+WW-FACTO      1.E-09    1.E+10             BLKBODY  @LASTREG
+WW-THRES       1000.      100.            4-HELIUM  @LASTPAR
+WW-THRES          1.      260.            WWLOWNEU  WWLOWNEU
+!@what.3=sgain**(6.0-gainpwmx)
+BIASING          0.0                   3      ROOF
+!@what.3=sgain**(7.0-gainpwmx)
+BIASING          0.0                   9     DIRT1
+!@what.3=sgain**(8.0-gainpwmx)
+BIASING          0.0                  27     DIRT2
+!@what.3=sgain**(9.0-gainpwmx)
+BIASING          0.0                  81     DIRT3
+!@what.3=sgain**(10.0-gainpwmx)
+BIASING          0.0                 243     DIRT4
+!@what.3=sgain**(10.0-gainpwmx)
+BIASING          0.0                 243   OUTSIDE
+!@what.3=sgain**(10.0-gainpwmx)
+BIASING          0.0                 243     MOUND
+!@what.3=sgain**(11.0-gainpwmx)
+BIASING          0.0                 729  OUTSIDE1
+!@what.3=sgain**(11.0-gainpwmx)
+BIASING          0.0                 729    MOUND1
+LAM-BIAS                  0.05              PHOTON    PHOTON
+LAM-BIAS                  0.01            ELECTRON  POSITRON
+LAM-BIAS                 0.003               MUON+     MUON-
+EMFCUT        -1E-05    1.E-05             BLKBODY  @LASTREG
+EMFCUT        -1E-05    1.E-05    1.E-05  BLCKHOLE  @LASTMAT          PROD-CUT
+RADDECAY          1.        1.        5.100000000.  1000100.        1.
+* ..+....1....+....2....+....3....+....4....+....5....+....6....+....7..
+LOW-PWXS          1.                      HYDROGEN  @LASTMAT
+ASSIGNMA    BLCKHOLE   BLKBODY
+ASSIGNMA    BLCKHOLE      DUMP
+ASSIGNMA        DIRT      VOID
+MATERIAL         74.    183.84      16.5                           0.0WPOWDER
+*
+MATERIAL                             1.7                              DIRT
+LOW-MAT      WPOWDER       74.       -2.      296.                    TUNGSTEN
+LOW-MAT         LEAD       82.       -2.      296.                    LEAD
+MATERIAL                            16.5                              WNiFe
+COMPOUND       -0.07    NICKEL     -0.03      IRON      -0.9  TUNGSTENWNiFe
+MATERIAL                           15.15                              WCu
+COMPOUND        -0.2    COPPER      -0.8  TUNGSTEN                    WCu
+COMPOUND       0.021  HYDROGEN     0.016    CARBON     0.577    OXYGENDIRT
+COMPOUND        0.05  ALUMINUM     0.271   SILICON     0.013  POTASSIUDIRT
+COMPOUND       0.041   CALCIUM     0.011      IRON                    DIRT
+* Liquid He4, 0.145 g/cm3
+MATERIAL          2.        4.     0.145                              LHe4
+LOW-MAT         LHe4        2.        4.        4.                    HELIUM-4
+* Solid NH3, 0.817 g/cm3
+MATERIAL                           0.817                              SolidNH3
+COMPOUND          1.  NITROGEN        3.  HYDROGEN                    SolidNH3
+* 40% LHe4  and 60% SolidNH3 mixture,  0.5482g/cm3
+MATERIAL                          0.5482                              NH3NHe4
+COMPOUND        -0.4     -LHe4      -0.6 -SolidNH3                    NH3NHe4
+ASSIGNMA         AIR     HALLC
+MATERIAL                            1.19                              BPOLY
+COMPOUND       -0.05     BORON     -0.95  POLYETHY                    BPOLY
+MATERIAL                            2.35                              CONCRETE
+MATERIAL         19.   39.0983     0.862                              POTASSIU
+MATERIAL          5.                2.37                              BORON
+COMPOUND       -0.01  HYDROGEN    -0.001    CARBON -0.529107    OXYGENCONCRETE
+COMPOUND      -0.016    SODIUM    -0.002  MAGNESIU -0.033872  ALUMINUMCONCRETE
+COMPOUND   -0.337021   SILICON    -0.013  POTASSIU    -0.044   CALCIUMCONCRETE
+COMPOUND      -0.014      IRON                                        CONCRETE
+* Wet Air, 100% humidity at 20C adds 2 g of H2 to 1 m3 changing density to 0.00120684 (near sea level)
+*
+MATERIAL                       .00120684                              AIRWET
+COMPOUND   -1.248E-4    CARBON  -0.75267  NITROGEN -0.231781    OXYGENAIRWET
+COMPOUND   -0.012827     ARGON  -0.00166  HYDROGEN                    AIRWET
+ASSIGNMA    CONCRETE  HALLWALL
+ASSIGNMA    ALUMINUM   CHAMENT                            1.
+ASSIGNMA      VACUUM   CHAMWIN
+ASSIGNMA    ALUMINUM    CHAMBO                            1.
+ASSIGNMA      VACUUM    CHAMBI                            1.
+ASSIGNMA        LEAD    TARGET                           0.0
+ASSIGNMA        IRON   ENGEMag
+ASSIGNMA        IRON      EPCS
+ASSIGNMA        IRON       EQ1
+ASSIGNMA        IRON       EQ2
+ASSIGNMA        IRON        ED
+ASSIGNMA    CONCRETE     HESSH
+ASSIGNMA        IRON      KPCS
+ASSIGNMA        IRON       KQ1
+ASSIGNMA        IRON       KQ2
+ASSIGNMA        IRON        KD
+ASSIGNMA    CONCRETE     HKSSH
+ASSIGNMA    CONCRETE    ENGESH
+ASSIGNMA        LEAD    ENGEBL
+ASSIGNMA    CONCRETE     MPSSH
+ASSIGNMA      VACUUM   BLBIAS5                            1.
+ASSIGNMA        IRON  DUMPLIN2                           0.0
+ASSIGNMA        IRON    DLFLNG                           0.0
+ASSIGNMA      AIRWET   OUTSIDE
+ASSIGNMA        DIRT     DIRT1
+ASSIGNMA        DIRT     DIRT2
+ASSIGNMA        DIRT     DIRT3
+ASSIGNMA        DIRT     DIRT4
+ASSIGNMA    CONCRETE      ROOF
+ASSIGNMA        DIRT     MOUND
+ASSIGNMA      AIRWET  OUTSIDE1
+ASSIGNMA        DIRT    MOUND1
+!@what.1=1000.*hour
+!@what.2=Ne_per_s
+IRRPROFI     36000001.56038E14
+!@what.1=1.*hour
+!@what.2=1.*day
+!@what.3=1.*week
+!@what.4=1.*month
+!@what.5=1.*year
+!@what.6=5.*year
+DCYTIMES        3600     86400    604800   2629800  31557600 157788000
+!@what.10=5./0.05
+!@what.11=10./0.025
+!@what.12=60./0.1
+USRBIN           10.   DOSE-EQ      -23.       2.5        5.       30.DsRtXYA
+USRBIN          -2.5       -5.      -30.       100       400       600 &
+USRBIN           10.   DOSE-EQ      -24.       15.       15.      210.DsRtXY
+USRBIN          -15.      -15.      -50.      150.      150.      260. &
+USRBIN           10.   DOSE-EQ      -24.        4.        4.      129.DsRtXY1
+USRBIN           -4.       -4.      127.      400.      400.        4. &
+AUXSCORE      USRBIN    PHOTON             DsRtXY1   DsRtXY1
+USRBIN           10.   DOSE-EQ      -24.        4.        4.      129.DsRtXYC
+USRBIN           -4.       -4.      127.      400.      400.        4. &
+AUXSCORE      USRBIN     E+&E-             DsRtXYC   DsRtXYC
+USRBIN           10.   DOSE-EQ      -24.        4.        4.      129.DsRtXYM
+USRBIN           -4.       -4.      127.      400.      400.        4. &
+AUXSCORE      USRBIN     MUONS             DsRtXYM   DsRtXYM
+USRBIN           10.   DOSE-EQ      -24.        4.        4.      129.DsRtXYP
+USRBIN           -4.       -4.      127.      400.      400.        4. &
+AUXSCORE      USRBIN   PIONS+-             DsRtXYP   DsRtXYP
+!@what.12=1500./5.
+USRBIN           11.   DOSE-EQ      -25.      270.       0.0     2200.DsRtTot
+USRBIN           0.0       0.0      700.      540.       72.       300 &
+!@what.12=1500./5.
+USRBIN           11.   DOSE-EQ      -25.      270.       0.0     2200.DsRt_n
+USRBIN           0.0       0.0      700.      540.       72.       300 &
+AUXSCORE      USRBIN   NEUTRON              DsRt_n    DsRt_n
+!@what.12=1500./5.
+USRBIN           11.   DOSE-EQ      -25.      270.       0.0     2200.DsRt_g
+USRBIN           0.0       0.0      700.      540.       72.       300 &
+AUXSCORE      USRBIN    PHOTON              DsRt_g    DsRt_g
+!@what.12=1500./5.
+USRBIN           11.   DOSE-EQ      -25.      270.       0.0     2200.DsRt_c
+USRBIN           0.0       0.0      700.      540.       72.       300 &
+AUXSCORE      USRBIN  ALL-CHAR              DsRt_c    DsRt_c
+!@what.12=1200./5.
+USRBIN           11.  SI1MEVNE      -26.      270.       0.0     1000.Si1MeV
+USRBIN           0.0       0.0     -200.      135.       72.       240 &
+!@what.10=4650/30
+!@what.11=3000/30
+!@what.12=4620/30
+USRBIN           10.  SI1MEVNE      -26.     1850.     2500.     2310.Si1MeVD
+USRBIN        -2800.     -500.    -2310.       155       100       154 &
+USRBIN           11.    ENERGY      -27.       30.       0.0      300.ELabs
+USRBIN           0.0       0.0     -100.      600.       72.      200. &
+USRBIN           12.    ENERGY      -28.  @LASTREG                    ELreg
+USRBIN       BLKBODY                            1.                     &
+!@what.12=1200./5.
+USRBIN           11.      DOSE      -29.      270.       0.0     1000.DsAccum
+USRBIN           0.0       0.0     -200.      135.       72.       240 &
+!@what.10=4650/30
+!@what.11=3000/30
+!@what.12=4620/30
+USRBIN           10.      DOSE      -29.     1850.     2500.     2310.DsAccumD
+USRBIN        -2010.     -500.    -2310.       155       100       154 &
+!@what.6=pi*1.8*1.8
+USRBDX           99.    PHOTON      -30.   BLBIAS5   CHAMENT10.1787602PhotonSp
+USRBDX           12.    1.2E-5      120.                               &
+!@what.6=pi*1.8*1.8
+USRBDX           99.  ELECTRON      -30.   BLBIAS5   CHAMENT10.1787602ElectrSp
+USRBDX           12.    1.2E-5      120.                               &
+!@what.6=pi*1.8*1.8
+USRBDX           99.  POSITRON      -30.   BLBIAS5   CHAMENT10.1787602PositrSp
+USRBDX           12.    1.2E-5      120.                               &
+!@what.6=pi*1.8*1.8
+USRBDX           99.   NEUTRON      -30.   BLBIAS5   CHAMENT10.1787602NeutrSp
+USRBDX           12.    1.2E-5      120.                               &
+!@what.6=pi*1.8*1.8
+USRBDX           99.     MUON-      -30.   BLBIAS5   CHAMENT10.1787602MumSp
+USRBDX           12.    1.2E-5      120.                               &
+!@what.6=pi*1.8*1.8
+USRBDX           99.     MUON+      -30.   BLBIAS5   CHAMENT10.1787602MupSp
+USRBDX           12.    1.2E-5      120.                               &
+!@what.10=4./0.025
+USRBIN           11.    ENERGY      -31.        4.       0.0       45.ELabs2
+USRBIN           0.0       0.0      -30.       160      144.      750. &
+USRBIN           11.   DOSE-EQ      -32.      270.       0.0     1500.DsRt1h
+USRBIN           0.0       0.0     -500.      135.       24.      400. &
+USRBIN           11.   DOSE-EQ      -32.      270.       0.0     1500.DsRt1d
+USRBIN           0.0       0.0     -500.      135.       24.      400. &
+USRBIN           11.   DOSE-EQ      -32.      270.       0.0     1500.DsRt1w
+USRBIN           0.0       0.0     -500.      135.       24.      400. &
+USRBIN           11.   DOSE-EQ      -32.      270.       0.0     1500.DsRt1m
+USRBIN           0.0       0.0     -500.      135.       24.      400. &
+USRBIN           11.   DOSE-EQ      -32.      270.       0.0     1500.DsRt1y
+USRBIN           0.0       0.0     -500.      135.       24.      400. &
+USRBIN           11.   DOSE-EQ      -32.      270.       0.0     1500.DsRt5y
+USRBIN           0.0       0.0     -500.      135.       24.      400. &
+!@what.4=60.*5.*inch
+USRBIN           11.   DOSE-EQ      -33.       762       0.0     8000.DsRtTG
+USRBIN           0.0       0.0    -2000.       60.       12.      100. &
+!@what.4=60.*5.*inch
+USRBIN           11.   DOSE-EQ      -33.       762       0.0     8000.DsRtTGn
+USRBIN           0.0       0.0    -2000.       60.       12.      100. &
+AUXSCORE      USRBIN   NEUTRON             DsRtTGn   DsRtTGn
+USRBIN           11.    ENERGY      -34.       15.       0.0       62.ELabs1
+USRBIN           0.0       0.0      -32.      600.      144.      188. &
+!@what.10=4650/30
+!@what.11=3000/30
+!@what.12=4620/30
+USRBIN           10.   DOSE-EQ      -35.     1850.     2500.     2310.DsRtTD
+USRBIN        -2800.     -500.    -2310.       155       100       154 &
+!@what.4=-TgX+30000.
+!@what.5=-TgY_Fl+Flrdeep+200.
+!@what.7=-TgX-30000.
+!@what.8=-TgY_Fl+Flrdeep
+USRBIN           10.   DOSE-EQ      -35.   29530.1    946.76    30000.DsRtTGS
+USRBIN      -30469.9    746.76   -30000.      300.        1.      300. &
+USRBIN           11.   DOSE-EQ      -35.    20000.              20000.DsRtTO
+USRBIN           0.0                 0.0      100.       36.      100. &
+USRBIN           11.   DOSE-EQ      -35.    20000.              20000.DsRtTO_n
+USRBIN           0.0                 0.0      100.       36.      100. &
+AUXSCORE      USRBIN   NEUTRON            DsRtTO_n  DsRtTO_n
+USRBIN           11.   DOSE-EQ      -35.    20000.              20000.DsRtTO_g
+USRBIN           0.0                 0.0      100.       36.      100. &
+AUXSCORE      USRBIN    PHOTON            DsRtTO_g  DsRtTO_g
+ROTPRBIN              RotScore              DsRtTO  DsRtTO_g
+DCYSCORE          1.                        DsRt1h    DsRt1h          USRBIN
+DCYSCORE          2.                        DsRt1d    DsRt1d          USRBIN
+DCYSCORE          3.                        DsRt1w    DsRt1w          USRBIN
+DCYSCORE          4.                        DsRt1m    DsRt1m          USRBIN
+DCYSCORE          5.                        DsRt1y    DsRt1y          USRBIN
+DCYSCORE          6.                        DsRt5y    DsRt5y          USRBIN
+SCORE         ENERGY
+* Set the random number seed
+RANDOMIZ          1.
+* Set the number of primary histories to be simulated in the run
+START      1000000.0
+STOP
+PHOTONUC          1.     0.002            BLCKHOLE  @LASTMAT          MUMUPAIR
+STOP
